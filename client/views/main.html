@@ -24,45 +24,9 @@
 
    </head>
    <body>
-      <script>
-      var msgs = ["Coming soon.", "..", "Well, soon-ish", "..."];
-
-      var naturalDelete = function (element) {
-         var len = element.innerHTML.length,
-             inter = 3000 / len;
-         var interval =  setInterval(function () {
-            if (element.innerHTML.length > 0) {
-               element.innerHTML = element.innerHTML.slice(0, element.innerHTML.length);
-            } else {
-               clearInterval(interval);
-            }
-         }, inter);
-      };
-
-      document.addEventListener("DOMContentLoaded", function (e) {
-         console.log("DOM loaded: " + e.text);
-         var title = document.querySelector("#stand-by");
-         if (title) {
-            var idx = 1,
-                i = 0;
-            setInterval(function () {
-               console.log("iter " + ++i);
-               if (idx === 0) {
-                  naturalDelete(title);
-               }
-               title.innerHTML += msgs[idx];
-               idx = ++idx % msgs.length;
-            }, 3000);
-         } else {
-            console.log("Couldn't find title element.");
-         }
-      });
-      </script>
       <header id="main-header">
          <img id="logo" src="../img/logo.png" alt="Hot Pants FC logo">
-         <h1 id="stand-by" style = "margin-left: 330px;
-         font-size: 50px;
-         line-height: 35px;">Coming soon.</h1>
+         <h1 id="stand-by">Coming soon.</h1>
       </header>
    </body>
 </html>
