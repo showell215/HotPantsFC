@@ -1,84 +1,9 @@
 <html>
    <head>
+      <meta name="viewport" con
+            tent="width=device-width, initial-scale=1">
       <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-      <style>
-      body { 
-         background-color: #fff;
-         font-family: "Lato", sans-serif;
-      }
-      #main-header {
-         margin-top: 10%;
-         display: flex;
-         flex-direction: column;
-      }
-      #logo-container {
-         width: 400px;
-         height: 270px;
-         margin: auto;
-      }
-      #logo-goat {
-         position: absolute;
-         width: 400px;
-         margin: auto;
-      }
-      
-      #logo-pants {
-         position: absolute;
-         width: 400px;
-         margin: auto;
-         animation: pants 1.5s infinite ease-in-out alternate
-      }
-      #stand-by {
-         margin: 20px auto;
-         font-size: 50px;
-         font-weight: 100;
-         line-height: 35px;
-         text-align: center;
-      }
-      @keyframes pants {
-         0% {
-            opacity: 0.0;
-         }
-         100% {
-            opacity: 0.6;
-         }
-      }
-      
-      .title-yuuuge {
-         font-size: 145px;
-         font-weight: lighter;
-      }
-      
-      .title-massive-1 {
-         font-size: 70px;   
-      }
-      
-      .title-massive-2 {
-         font-size: 60px;
-      }
-      
-      .title-big {
-         font-size: 45px;
-      }
-      
-      .no-bottom {
-         margin-bottom: 0;
-      }
-      
-      .no-top {
-         margin-top: 0;
-      }
-      
-      #title-hp {
-         float: left;
-         margin-right: 0;
-      }
-      
-      #title-fc {
-         float: left;
-         color: #b300b3;
-      }
-      </style>
+      <link href="../styles/main.css" rel="stylesheet">
    </head>
    <body>
       <script>
@@ -86,19 +11,35 @@
             console.log("stuff!");
          });
       </script>
-      <header id="main-header">
-         <div id="logo-container">
-            <div style="position: absolute; z-index: 200; margin: 30px 40px;">
-               <span id="title-hp">
-                  <h2 class="title-massive-1 no-bottom">HOT</h2>
-                  <h3 class="title-big no-top">PANTS</h3>
-               </span>
-               <span id="title-fc"><h1 class="title-yuuuge" style="margin:20% 15px 0;">FC</h1></span>
-            </div>
-            <img id="logo-goat" src="../img/logo-goat.png" alt="Hot Pants FC logo">
-            <img id="logo-pants" src="../img/logo-pants.png" alt="Hot Pants FC logo">
+      <div id="main">
+         <!--<div class="wrapper">-->
+            <!--<div class="col-12">-->
+               <!--<header class="title-massive-2 center" id="header-pri">-->
+                  <!--<h1>Hot Pants FC</h1>-->
+               <!--</header>-->
+            <!--</div>-->
+         <!--</div>-->
+         <div class="grid">
+            <div class="col-xx-1 col-xl-2 col-lg-4 col-md-6 col-sm-12" style="height: 100px; border: 1px solid white; background-color: blue;"></div>
+            <div class="col-xx-1 col-xl-2 col-lg-4 col-md-6 col-sm-12" style="height: 100px; border: 1px solid white; background-color: blue;"></div>
+            <div class="col-xx-1 col-xl-2 col-lg-4 col-md-6 col-sm-12" style="height: 100px; border: 1px solid white; background-color: blue;"></div>
+            <div class="col-xx-1 col-xl-2 col-lg-4 col-md-6 col-sm-12" style="height: 100px; border: 1px solid white; background-color: blue;"></div>
+            <div class="col-xx-1 col-xl-2 col-lg-4 col-md-6 col-sm-12" style="height: 100px; border: 1px solid white; background-color: blue;"></div>
+            <div class="col-xx-1 col-xl-2 col-lg-4 col-md-6 col-sm-12" style="height: 100px; border: 1px solid white; background-color: blue;"></div>
+            <div class="col-xx-1 col-xl-2 col-lg-4 col-md-6 col-sm-12" style="height: 100px; border: 1px solid white; background-color: blue;"></div>
+            <div class="col-xx-1 col-xl-2 col-lg-4 col-md-6 col-sm-12" style="height: 100px; border: 1px solid white; background-color: blue;"></div>
+            <div class="col-xx-1 col-xl-2 col-lg-4 col-md-6 col-sm-12" style="height: 100px; border: 1px solid white; background-color: blue;"></div>
+            <div class="col-xx-1 col-xl-2 col-lg-4 col-md-6 col-sm-12" style="height: 100px; border: 1px solid white; background-color: blue;"></div>
+            <div class="col-xx-1 col-xl-2 col-lg-4 col-md-6 col-sm-12" style="height: 100px; border: 1px solid white; background-color: blue;"></div>
+            <div class="col-xx-1 col-xl-2 col-lg-4 col-md-6 col-sm-12" style="height: 100px; border: 1px solid white; background-color: blue;"></div>
+
+
+            <div class="col-xx-12" style="height: 100px; background-color: red;"></div>
+
+
+
+
          </div>
-         <h1 id="stand-by">Coming soon.</h1>
-      </header>
+      </div>
    </body>
 </html>
