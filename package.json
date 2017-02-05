@@ -1,0 +1,9 @@
+{
+    'name': 'Hot Pants FC',
+    'version': '0.1',
+    'description': 'IBM Marketplace Products And Services',
+    'engines': {
+        'node': 6.9'
+    'scripts': {
+    }   
+}

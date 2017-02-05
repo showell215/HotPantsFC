@@ -1,0 +1,60 @@
+<html>
+   <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+      <link href="src/styles/main.css" rel="stylesheet">
+   </head>
+   <body>
+      <script>
+         document.addEventListener("DOMContentLoaded", function (e) {
+            var http = new XMLHttpRequest(),
+                roster,
+                players,
+                rosterParent;
+            http.onreadystatechange = function () {
+               if (this.readyState === 4 && this.status === 200) {
+                  console.log(this.responseText);
+                  var res = this.responseText;
+                  roster = JSON.parse(res);
+                  if (roster.players && Array.isArray(roster.players)) {
+                     players = roster.players;
+                  }
+                  rosterParent = document.getElementById("roster");
+                  players.forEach(function (player) {
+                     console.log(player);
+                     var elementPlayer = document.createElement("DIV"),
+                             playerWrapper = document.createElement("DIV");
+                    // playerWrapper.className = "col-xx-1 col-xl-1 col-lg-2 col-md-4 col-sm-6";
+                     elementPlayer.className = "roster-player col-xx-2 col-xl-3 col-lg-4 col-md-6 col-sm-12";
+                     elementPlayer.style.backgroundImage = "url('" + player.imgPri + "')";
+                     elementPlayer.style.backgroundRepeat = "no-repeat";
+                     elementPlayer.addEventListener("mouseenter", function (mee) {
+                        elementPlayer.style.backgroundImage = "url('" + player.imgSec+ "')";
+                     });
+                     elementPlayer.addEventListener("mouseexit", function (mex) {
+                        elementPlayer.style.backgroundImage = "url('" + player.imgPri + "')";
+                     });
+                   //  playerWrapper.appendChild(elementPlayer);
+                     rosterParent.appendChild(elementPlayer);
+                  });
+               }
+            };
+
+            http.open("GET", "../../static/data/roster.json", true);
+            http.send();
+         });
+      </script>
+      <div id="main">
+         <div class="grid">
+            <div class="col-xx-12">
+               <header class="title-massive-2 center" id="header-pri">
+                  <h1>Hot Pants FC</h1>
+               </header>
+            </div>
+
+            <section id="roster" class="grid"></section>
+
+         </div>
+      </div>
+   </body>
+</html>
