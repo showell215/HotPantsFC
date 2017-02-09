@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Hot Pants FC",
   "engines": {
-    "node": "6.9"
+    "node": "4.2"
   },
   "scripts": {
     "watch": "sass --watch src/styles:dist",
