@@ -11,6 +11,10 @@ body {
   text-align: center;
 }
 // font styles
+.title-huge {
+  font-size: 9rem;
+}
+
 .title-massive-1 {
   font-size: 4.375rem;
 }
@@ -43,7 +47,7 @@ body {
   width: 100%;
   height: 100%;
   display: block;
-  background: url("../img/field-bg.jpg");
+  background: url("../src/img/field-bg.jpg");
   background-repeat: no-repeat;
   -webkit-background-size: cover !important;
   background-size: cover !important;
