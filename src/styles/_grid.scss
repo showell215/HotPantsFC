@@ -1,0 +1,40 @@
+$nColumns: 12;
+
+$breakpoints: (
+    sm: 320px,
+    md: 560px,
+    lg: 1000px
+);
+
+[class*='col-'] {
+  padding: .5rem;
+  width: 100%;
+  max-width: 100%;
+  min-height: 1px;
+}
+
+@mixin break($size) {
+  @media (min-width: map-get($breakpoints, $size)) {
+    @content;
+  }
+}
+
+.grid {
+  display: flex;
+  flex-flow: row wrap;
+  padding: 10px;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+// loop over the breakpoints
+@each $key, $value in $breakpoints {
+  @for $i from $nColumns through 1 {
+    .col-#{$key}-#{$i} {
+      @include break($key) {
+        flex: 0 0 calc(#{$i / $nColumns * 100%} - 10px);
+        margin-right: 10px;
+      }
+    }
+  }
+}

@@ -1,0 +1,47 @@
+#main-header {
+  padding-top: 10%;
+  display: flex;
+  flex-direction: column;
+}
+#logo-container {
+  width: 400px;
+  height: 270px;
+  margin: auto;
+}
+#logo-goat {
+  position: absolute;
+  width: 400px;
+  margin: auto;
+}
+
+#logo-pants {
+  position: absolute;
+  width: 400px;
+  margin: auto;
+  animation: pants 1.5s infinite ease-in-out alternate
+}
+#stand-by {
+  margin: 20px auto;
+  font-size: 50px;
+  font-weight: 100;
+  line-height: 35px;
+  text-align: center;
+}
+@keyframes pants {
+  0% {
+    opacity: 0.0;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+#title-hp {
+  float: left;
+  margin-right: 0;
+}
+
+#title-fc {
+  float: left;
+  color: #b300b3;
+}
