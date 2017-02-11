@@ -18,6 +18,5 @@ node_modules/
 *.sublime*
 dist/
 **/.DS_Store
-**/.deploy.sh
+deploy.sh
 logs/*
-#
