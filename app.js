@@ -1,6 +1,6 @@
 var http = require('http'),
     fs = require('fs'),
-    port = process.env.PORT || 8080;
+    port = process.env.APP_PORT || 8080;
 
 http.createServer(function (request, response) {
     request.on('error', function(err) {
