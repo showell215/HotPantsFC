@@ -9,7 +9,7 @@
 **/*.css
 **/*.css.map
 scss-lint-report.xml
-.sass-cache/
+**/.sass-cache/
 .tmp/
 log/
 *.log
@@ -18,4 +18,4 @@ node_modules/
 *.sublime*
 dist/
 **/.DS_Store
-
+**/.deploy.sh
