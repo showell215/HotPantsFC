@@ -11,5 +11,6 @@
     "lint": "scss-lint src/styles/*"
   },
   "devDependencies": {
+    "autoprefixer": "^6.7.3"
   }
 }
