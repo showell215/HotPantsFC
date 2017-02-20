@@ -1,17 +1,11 @@
 $nColumns: 12;
 
 $breakpoints: (
-    sm: 320px,
-    md: 560px,
-    lg: 1000px
+    xs: 320px,
+    sm: 580px,
+    md: 1000px,
+    lg: 1240px
 );
-
-[class*='col-'] {
-  padding: .5rem;
-  width: 100%;
-  max-width: 100%;
-  min-height: 1px;
-}
 
 @mixin break($size) {
   @media (min-width: map-get($breakpoints, $size)) {
@@ -19,22 +13,67 @@ $breakpoints: (
   }
 }
 
-.grid {
-  display: flex;
-  flex-flow: row wrap;
-  padding: 10px;
-  max-width: 1600px;
-  margin: 0 auto;
+@mixin max($size) {
+  @media (max-width: map-get($breakpoints, $size - 1px)) {
+    @content
+  }
 }
 
-// loop over the breakpoints
-@each $key, $value in $breakpoints {
-  @for $i from $nColumns through 1 {
-    .col-#{$key}-#{$i} {
-      @include break($key) {
-        flex: 0 0 calc(#{$i / $nColumns * 100%} - 10px);
-        margin-right: 10px;
+[class*='col-'] {
+  float: none;
+  width: 100%;
+
+  &.grid {
+      width: calc(100% + 20px);
+  }
+  @media (min-width: (map-get($breakpoints, sm))) {
+    float: left;
+  }
+  max-width: 100%;
+  padding: 0 10px;
+  min-height: 1px;
+  webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box
+}
+
+.grid {
+  margin: 0 auto;
+  padding: 0 10px 10px;
+  max-width: 1600px;
+  box-sizing: border-box;
+
+  // loop over the breakpoints
+  @each $key, $value in $breakpoints {
+    @for $i from $nColumns through 1 {
+      .col-#{$key}-#{$i} {
+        @include break($key) {
+          width: (100% * ($i / $nColumns));
+        }
+        &.grid{
+          @include break($key) {
+            width: calc(#{(100% * $i / $nColumns)} + 20px);
+          }
+        }
       }
     }
   }
+  //hide classes
+  .hide-sm {
+    @media (min-width: map-get($breakpoints, sm)) and (max-width: map-get($breakpoints, md) - 1px) {
+      display: none;
+    }
+  }
+  .hide-xs {
+    @media (min-width: map-get($breakpoints, xs)) and (max-width: map-get($breakpoints, sm) - 1px) {
+      display: none;
+    }
+  }
+
+  .grid {
+    margin-left: -10px;
+    margin-right: -10px
+  }
 }
+
+
