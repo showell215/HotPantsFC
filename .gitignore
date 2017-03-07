@@ -20,5 +20,4 @@ dist/
 **/.DS_Store
 deploy.sh
 logs/*
-/npm-debug.log.1879615324
-/npm-debug.log.3316010764
+/npm-debug.*
