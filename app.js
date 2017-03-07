@@ -25,9 +25,9 @@ http.createServer(function (request, response) {
         if (request.url === '/') {
             fs.readFile(__dirname + '/src/views/index.html', function (err, index) {
                 if (err) {
-                    console.log("Error retrieving asset: ", err);
+                    console.log('Error retrieving asset:', err);
                     response.statusCode = 404;
-                    response.end("Not found");
+                    response.end('Not found');
                 } else {
                     response.writeHead(200, {'Content-Type': 'text/html'});
                     response.write(index);
@@ -38,9 +38,9 @@ http.createServer(function (request, response) {
             //TODO This is temporary
             fs.readFile(__dirname + '/src/views/proto.html', function (err, index) {
                 if (err) {
-                    console.log("Error retrieving asset: ", err);
+                    console.log('Error retrieving asset: ', err);
                     response.statusCode = 404;
-                    response.end("Not found");
+                    response.end('Not found');
                 } else {
                     response.writeHead(200, {'Content-Type': 'text/html'});
                     response.write(index);
@@ -48,13 +48,13 @@ http.createServer(function (request, response) {
                 }
             });
         } else if (request.url === '/grid') {
-            console.log("request for GRID");
+            console.log('request for GRID');
             //TODO This is temporary
             fs.readFile(__dirname + '/src/views/grid.html', function (err, index) {
                 if (err) {
-                    console.log("Error retrieving asset: ", err);
+                    console.log('Error retrieving asset: ', err);
                     response.statusCode = 404;
-                    response.end("Not found");
+                    response.end('Not found');
                 } else {
                     response.writeHead(200, {'Content-Type': 'text/html'});
                     response.write(index);
@@ -66,9 +66,9 @@ http.createServer(function (request, response) {
                 extension = filename.substring(filename.indexOf('.'));
             fs.readFile(__dirname + request.url, function (err, asset) {
                 if (err) {
-                    console.log("Error retrieving asset: ", err);
+                    console.log('Error retrieving asset: ', err);
                     response.statusCode = 404;
-                    response.end("Not found");
+                    response.end('Not found');
                 } else {
                     response.writeHead(200, {'Content-Type': mimeMap[extension]});
                     response.write(asset);
@@ -78,7 +78,7 @@ http.createServer(function (request, response) {
         }
     } else {
         response.statusCode = 403;
-        response.end("Forbidden");
+        response.end('Forbidden');
     }
 
 }).listen(port);
