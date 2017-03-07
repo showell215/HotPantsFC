@@ -7,10 +7,14 @@
   },
   "scripts": {
     "watch": "sass --watch src/styles:dist",
-    "prewatch": "sass src/styles/main.scss dist/main.css",
-    "lint": "scss-lint src/styles/*"
+    "prewatch": "npm run css",
+    "css": "sass src/styles/main.scss dist/main.css",
+    "precss": "npm run lint",
+    "lint": "scss-lint && eslint app.js src/js/**/*.js"
   },
   "devDependencies": {
-    "autoprefixer": "^6.7.3"
+    "autoprefixer": "^6.7.3",
+    "eslint": "^3.17.1",
+    "scss-lint": "0.38.0"
   }
 }
