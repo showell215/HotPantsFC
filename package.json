@@ -18,5 +18,8 @@
     "autoprefixer": "^6.7.3",
     "eslint": "^3.17.1",
     "scss-lint": "^0"
+  },
+  "dirs": {
+    "views": "/src/views"
   }
 }

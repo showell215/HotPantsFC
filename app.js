@@ -1,88 +1,89 @@
+'use strict';
+
 var http = require('http'),
     fs = require('fs'),
     accessLog = require('access-log'),
+    dirs = require('./package.json').dirs,
     port = process.env.APP_PORT || 8080;
+
+function logInfo (info) {
+    console.log('\x1b[36m' + info + '\x1b[0m');
+}
+
+function logError (err) {
+    console.error('\x1b[31m' + err + '\x1b[0m');
+}
 
 http.createServer(function (request, response) {
     accessLog(request, response);
     request.on('error', function(err) {
-        console.error(err);
+        logError(err);
         response.statusCode = 400;
         response.end();
     });
     response.on('error', function(err) {
-        console.error(err);
+        logError(err);
     });
-    console.log(request.method, request.url);
     var mimeMap = {
         '.html' : 'text/html',
         '.json' : 'application/json',
         '.js'   : 'application/js',
         '.jpg'  : 'image/jpeg',
         '.png'  : 'image/png',
-        '.css'  : 'text/css'
+        '.css'  : 'text/css',
+        '.ico'  : 'image/x-icon'
     };
 
     if (request.method === 'GET') {
-        if (request.url === '/') {
-            fs.readFile(__dirname + '/src/views/index.html', function (err, index) {
-                if (err) {
-                    console.log('Error retrieving asset:', err);
-                    response.statusCode = 404;
-                    response.end('Not found');
-                } else {
-                    response.writeHead(200, {'Content-Type': 'text/html'});
-                    response.write(index);
+        var filename = request.url.substring(request.url.lastIndexOf('/') + 1),
+            extension = filename.indexOf('.') > -1 ? filename.substring(filename.indexOf('.')) : "",
+            readStream,
+            path;
+        if (!extension) { // view
+            if (request.url === '/') {
+                path = __dirname + dirs.views + '/index.html';
+            } else {
+                path = __dirname + dirs.views + request.url + '.html';
+            }
+            readStream = fs.createReadStream(path);
+            readStream
+                .on('open', function () {
+                    // console.log(request);
+                    response.writeHead(200, {'Content-Type': mimeMap['.html']});
+                    readStream.pipe(response);
+                })
+                .on('error', function (e) {
+                    logError(e);
+                    //response.statusCode = 404;
+                    // response.end(e);
+                    response.writeHead(301,
+                        {Location: '/'}
+                    );
                     response.end();
-                }
-            });
-        } else if (request.url === '/proto') {
-            //TODO This is temporary
-            fs.readFile(__dirname + '/src/views/proto.html', function (err, index) {
-                if (err) {
-                    console.log('Error retrieving asset: ', err);
-                    response.statusCode = 404;
-                    response.end('Not found');
-                } else {
-                    response.writeHead(200, {'Content-Type': 'text/html'});
-                    response.write(index);
-                    response.end();
-                }
-            });
-        } else if (request.url === '/grid') {
-            console.log('request for GRID');
-            //TODO This is temporary
-            fs.readFile(__dirname + '/src/views/grid.html', function (err, index) {
-                if (err) {
-                    console.log('Error retrieving asset: ', err);
-                    response.statusCode = 404;
-                    response.end('Not found');
-                } else {
-                    response.writeHead(200, {'Content-Type': 'text/html'});
-                    response.write(index);
-                    response.end();
-                }
-            });
-        } else {
-            var filename = request.url.substring(request.url.lastIndexOf('/') + 1),
-                extension = filename.substring(filename.indexOf('.'));
-            fs.readFile(__dirname + request.url, function (err, asset) {
-                if (err) {
-                    console.log('Error retrieving asset: ', err);
-                    response.statusCode = 404;
-                    response.end('Not found');
-                } else {
+                })
+        } else { // other asset
+            readStream = fs.createReadStream(__dirname + request.url);
+            readStream
+                .on('open', function () {
                     response.writeHead(200, {'Content-Type': mimeMap[extension]});
-                    response.write(asset);
+                    readStream.pipe(response);
+                })
+                .on('error', function (e) {
+                    logError(e);
+                    // response.statusCode = 404;
+                    // response.end(e);
+                    response.writeHead(301,
+                        {Location: '/'}
+                    );
                     response.end();
-                }
-            });
+                })
         }
     } else {
         response.statusCode = 403;
         response.end('Forbidden');
     }
+    logInfo(request.method + " : " + request.url + " -- " + response.statusCode);
 
 }).listen(port);
 
-console.log('Server listening on ', port, '...');
+logInfo('Server listening on ' + port + '...');
