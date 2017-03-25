@@ -1,8 +1,10 @@
 var http = require('http'),
     fs = require('fs'),
+    accessLog = require('access-log'),
     port = process.env.APP_PORT || 8080;
 
 http.createServer(function (request, response) {
+    accessLog(request, response);
     request.on('error', function(err) {
         console.error(err);
         response.statusCode = 400;
