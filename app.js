@@ -48,20 +48,15 @@ http.createServer(function (request, response) {
             readStream = fs.createReadStream(path);
             readStream
                 .on('open', function () {
-                    // console.log(request);
                     response.writeHead(200, {'Content-Type': mimeMap['.html']});
                     readStream.pipe(response);
                 })
                 .on('error', function (e) {
                     logError(e);
-                    //response.statusCode = 404;
-                    // response.end(e);
-                    response.writeHead(301,
-                        {Location: '/'}
-                    );
+                    response.writeHead(301, {Location: '/'});
                     response.end();
                 })
-        } else { // other asset
+        } else if (extension.match(new RegExp(Object.keys(mimeMap).join('|')))) { // other asset based on permitted mime types
             readStream = fs.createReadStream(__dirname + request.url);
             readStream
                 .on('open', function () {
@@ -70,13 +65,12 @@ http.createServer(function (request, response) {
                 })
                 .on('error', function (e) {
                     logError(e);
-                    // response.statusCode = 404;
-                    // response.end(e);
-                    response.writeHead(301,
-                        {Location: '/'}
-                    );
+                    response.writeHead(301, {Location: '/'});
                     response.end();
                 })
+        } else {
+            response.statusCode = 403;
+            response.end('Forbidden');
         }
     } else {
         response.statusCode = 403;
