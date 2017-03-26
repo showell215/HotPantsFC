@@ -8,6 +8,7 @@
   "scripts": {
     "watch": "sass --watch src/styles:dist",
     "prewatch": "npm run css",
+    "css-only": "sass src/styles/main.scss dist/main.css",
     "css": "sass src/styles/main.scss dist/main.css",
     "precss": "npm run lint",
     "lint": "scss-lint && eslint app.js src/js/**/*.js"
