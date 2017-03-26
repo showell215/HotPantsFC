@@ -13,11 +13,9 @@
     "lint": "scss-lint && eslint app.js src/js/**/*.js"
   },
   "devDependencies": {
+    "access-log": "^0.3.9",
     "autoprefixer": "^6.7.3",
     "eslint": "^3.17.1",
-    "scss-lint": "0.38.0"
-  },
-  "dependencies": {
-    "access-log": "^0.3.9"
+    "scss-lint": "^0"
   }
 }
