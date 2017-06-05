@@ -42,9 +42,15 @@
 }
 
 #title-hp {
+    width: 45%;
+    display: inline-block;
     margin-right: 0;
 }
 
 #title-fc {
+    position: relative;
+    left: 40px;
+    bottom: 20px;
+    display: inline-block;
     color: #b300b3;
 }

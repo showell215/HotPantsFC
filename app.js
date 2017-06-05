@@ -36,7 +36,7 @@ http.createServer(function (request, response) {
 
     if (request.method === 'GET') {
         var filename = request.url.substring(request.url.lastIndexOf('/') + 1),
-            extension = filename.indexOf('.') > -1 ? filename.substring(filename.indexOf('.')) : "",
+            extension = filename.indexOf('.') > -1 ? filename.substring(filename.indexOf('.')) : '',
             readStream,
             path;
         if (!extension) { // view
@@ -55,7 +55,7 @@ http.createServer(function (request, response) {
                     logError(e);
                     response.writeHead(301, {Location: '/'});
                     response.end();
-                })
+                });
         } else if (extension.match(new RegExp(Object.keys(mimeMap).join('|')))) { // other asset based on permitted mime types
             readStream = fs.createReadStream(__dirname + request.url);
             readStream
@@ -67,7 +67,7 @@ http.createServer(function (request, response) {
                     logError(e);
                     response.writeHead(301, {Location: '/'});
                     response.end();
-                })
+                });
         } else {
             response.statusCode = 403;
             response.end('Forbidden');
@@ -76,7 +76,7 @@ http.createServer(function (request, response) {
         response.statusCode = 403;
         response.end('Forbidden');
     }
-    logInfo(request.method + " : " + request.url + " -- " + response.statusCode);
+    logInfo(request.method + ' : ' + request.url + ' -- ' + response.statusCode);
 
 }).listen(port);
 
