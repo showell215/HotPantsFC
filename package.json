@@ -8,18 +8,21 @@
   "scripts": {
     "watch": "sass --watch src/styles:dist",
     "prewatch": "npm run css",
-    "css-only": "sass src/styles/main.scss dist/main.css",
     "css": "sass src/styles/main.scss dist/main.css",
-    "precss": "npm run lint",
-    "lint": "scss-lint && eslint app.js src/js/**/*.js"
+    "precss": "scss-lint",
+    "lint": "scss-lint && npm run jslint && npm run htmllint",
+    "htmllint": "node ./html5Lint.js",
+    "jslint": "eslint app.js src/js/**/*.js",
+    "build": "npm run lint && npm run css"
   },
   "devDependencies": {
     "access-log": "^0.3.9",
     "autoprefixer": "^6.7.3",
     "eslint": "^3.17.1",
+    "html5-lint": "^0.3.0",
     "scss-lint": "^0"
   },
   "dirs": {
-    "views": "/src/views"
+    "views": "/src/views/"
   }
 }
