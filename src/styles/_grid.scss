@@ -20,13 +20,14 @@ $breakpoints: (
 }
 
 [class*='col-'] {
-    float: none;
-    width: 100%;
-    max-width: 100%;
-    padding: 0 10px;
-    min-height: 1px;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+    float: none;
+    max-width: 100%;
+    min-height: 1px;
+    padding: 0 10px;
+    width: 100%;
+
 
     &.grid {
         width: calc(100% + 20px);
@@ -38,10 +39,10 @@ $breakpoints: (
 }
 
 .grid {
-    margin: 0 auto;
-    padding: 0 10px 10px;
-    max-width: 1600px;
     box-sizing: border-box;
+    margin: 0 auto;
+    max-width: 1600px;
+    padding: 0 10px 10px;
 
     // loop over the breakpoints
     @each $key, $value in $breakpoints {

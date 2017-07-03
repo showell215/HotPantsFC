@@ -9,8 +9,8 @@
     "watch": "sass --watch src/styles:dist",
     "prewatch": "npm run css",
     "css": "sass src/styles/main.scss dist/main.css",
-    "precss": "scss-lint",
-    "lint": "scss-lint && npm run jslint && npm run htmllint",
+    "precss": "sass-lint --verbose",
+    "lint": "sass-lint --verbose && npm run jslint && npm run htmllint",
     "htmllint": "node ./html5Lint.js",
     "jslint": "eslint app.js src/js/**/*.js",
     "build": "npm run lint && npm run css"
@@ -20,7 +20,7 @@
     "autoprefixer": "^6.7.3",
     "eslint": "^3.17.1",
     "html5-lint": "^0.3.0",
-    "scss-lint": "^0"
+    "sass-lint": "^1.10.2"
   },
   "dirs": {
     "views": "/src/views/"
