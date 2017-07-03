@@ -1,33 +1,33 @@
 #main-header {
-    padding-top: 10%;
     display: flex;
     flex-direction: column;
+    padding-top: 10%;
 }
 
 #logo-container {
-    width: 320px;
     height: 215px;
     margin: auto;
+    width: 320px;
 }
 
 #logo-goat {
+    margin: auto;
     position: absolute;
     width: 300px;
-    margin: auto;
 }
 
 #logo-pants {
+    animation: pants 1.5s infinite ease-in-out alternate;
+    margin: auto;
     position: absolute;
     width: 300px;
-    margin: auto;
-    animation: pants 1.5s infinite ease-in-out alternate;
 }
 
 #stand-by {
-    margin: 20px auto;
     font-size: 50px;
     font-weight: 100;
     line-height: 35px;
+    margin: 20px auto;
     text-align: center;
 }
 
@@ -42,15 +42,15 @@
 }
 
 #title-hp {
-    width: 45%;
     display: inline-block;
     margin-right: 0;
+    width: 45%;
 }
 
 #title-fc {
-    position: relative;
-    left: 40px;
     bottom: 20px;
+    color: #B300B3;
     display: inline-block;
-    color: #b300b3;
+    left: 40px;
+    position: relative;
 }
