@@ -1,3 +1,5 @@
+'use strict';
+
 const fs = require('fs'),
     html5lint = require('html5-lint'),
     views = require('./package.json').dirs.views;
